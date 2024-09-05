@@ -87,35 +87,6 @@ const openInAnotherApp = async () => {
            </Pressable>
            
           </View>
-          <Pdf
-            trustAllCerts={false}
-            fitWidth={true}
-            source={pdfSource}
-            onLoadProgress={(percent) => {
-              console.log(`Loading progress: ${percent}%`);
-          }}
-          
-            onLoadComplete={(numberOfPages, width, height) => {
-              setTotalPages(numberOfPages);
-              setCurrentPage(1);
-              console.log(`PDF loaded with ${numberOfPages} pages. Page size: ${width}x${height}`);
-          }}
-         
-          
-            onPageChanged={(page) => {
-              setCurrentPage(page);
-        
-            }}
-            onError={(error) => {
-              console.log(error);
-            }}
-            onPressLink={(uri) => {
-              console.log(`Link pressed: ${uri}`);
-              Linking.openURL(uri)
-              
-            }}
-            style={styles.pdf}
-          />
           <View style={styles.pageCounter}>
             <Text style={styles.pageCounterText}>
               Page {currentPage} / {totalPages}
@@ -171,12 +142,12 @@ fontSize:30
     padding: 10,
     borderRadius: 5,
   }, 
-  fileName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
+  // fileName: {
+  //   fontSize: 16,
+  //   fontWeight: 'bold',
+  //   marginBottom: 10,
+  //   textAlign: 'center',
+  // },
   pageCounterText: {
     color: '#ffffff',
     fontSize: 16,
