@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet, Dimensions } from 'react-native';
 import Pdf from 'react-native-pdf';
 import { Share } from 'react-native';
-const PdfViewer = ({ pdfSource, currentPage, setCurrentPage, totalPages, setTotalPages }) => {
+const PdfViewer = ({ pdfSource,password, currentPage, setCurrentPage, totalPages, setTotalPages }) => {
   const openInAnotherApp = async () => {
     try {
       await Share.share({
@@ -22,13 +22,14 @@ const PdfViewer = ({ pdfSource, currentPage, setCurrentPage, totalPages, setTota
       <View style={styles.NameContainer}>
         <Text style={styles.fileName}>{pdfSource.name}</Text>
         <Pressable onPress={openInAnotherApp}>
-          <Text style={styles.threedot}>⋮</Text>
+          <Text style={styles.threedot}></Text>
         </Pressable>
       </View>
       <Pdf
         source={pdfSource}
         onPageChanged={(page) => setCurrentPage(page)}
         onLoadComplete={(numberOfPages) => setTotalPages(numberOfPages)}
+        password={password}
         style={styles.pdf}
       />
       <View style={styles.pageCounter}>
