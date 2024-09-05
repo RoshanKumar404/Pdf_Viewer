@@ -22,14 +22,13 @@ const PdfViewer = ({ pdfSource,password, currentPage, setCurrentPage, totalPages
       <View style={styles.NameContainer}>
         <Text style={styles.fileName}>{pdfSource.name}</Text>
         <Pressable onPress={openInAnotherApp}>
-          <Text style={styles.threedot}></Text>
+          <Text style={styles.threedot}>⋮</Text>
         </Pressable>
       </View>
       <Pdf
         source={pdfSource}
         onPageChanged={(page) => setCurrentPage(page)}
         onLoadComplete={(numberOfPages) => setTotalPages(numberOfPages)}
-        password={password}
         style={styles.pdf}
       />
       <View style={styles.pageCounter}>

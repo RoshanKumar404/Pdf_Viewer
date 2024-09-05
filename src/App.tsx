@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View,TextInput, Button, Dimensions } from 'react-native';
+import { View, Button, Dimensions } from 'react-native';
 import { selectPdfFile } from './DocumnetPicker';
 import PdfViewer from './PdfViewer';
 
@@ -8,7 +8,6 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [orientation, setOrientation] = useState('portrait');
-  const [password,setPassword]=useState('')
 
   // Detect screen orientation
   useEffect(() => {
@@ -27,18 +26,8 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }}>
-
       {!pdfSource ? (
-        <View>
         <Button title="Select PDF" onPress={() => selectPdfFile(setPdfSource)} />
-        <TextInput
-            placeholder="Enter PDF Password"
-            value={password}
-            onChangeText={setPassword}
-            style={{ borderWidth: 1, marginTop: 20, padding: 10 }}
-            secureTextEntry={true}
-          />
-       </View>
       ) : (
         <PdfViewer
           pdfSource={pdfSource}
@@ -46,7 +35,6 @@ export default function App() {
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
           setTotalPages={setTotalPages}
-          password={password}
         />
       )}
     </View>
